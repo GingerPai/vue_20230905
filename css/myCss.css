@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+:root {
+    --mycolor01: #ece4e2;
+    --mycolor02: #fcd3d1;
+    --mycolor03: #fcdff3;
+    --mycolor04: #fe929f;
+    --mycolor05: #ffc2c3;
+    --mycolor06: #ffa6b0;
+    --color_p01: #d3b7d8;
+    --color_p02: #a13e97;
+    --color_p03: #632a7e;
+    --color_p04: #280e3b;
+    --color_ps1: #dfe4de;
+    --color_ps2: #126f80;
+    --color_ps3: #f95151;
+    --color_ps4: #525e76;
+}
+.bg-cover {
+    background-size: cover;
+    background-position: center center;
+  }
+.fw-100 {
+    font-weight: 100;
+}
+.fw-300 {
+    font-weight: 300;
+}
+.fw-400 {
+    font-weight: 400;
+}
+.fw-500 {
+    font-weight: 500;
+}
+.fw-700 {
+    font-weight: 700;
+}
+.fw-900 {
+    font-weight: 700;
+}
+.bd-1 {
+    border: 1px solid #000;
+}
+html {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.demo{
+  border: 3px solid var(--color_p02);
+  margin: 15px;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.02);
+}
+.box01 {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #999;
+  margin: 5px;
+}
+.box02 {
+    height: 200px;
+    border: 2px solid var(--color_p02);
+    background-color: var(--color_p01);
+}
+.note_h2 {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 5px;
+    color: #333;
+    background-color: var(--color_p01);
+}
+.bg-cover {
+    background-position: center center;
+    background-size: cover;
+}
+
+a {
+    text-decoration: none;
+}
+/* 未連結 */
+a:link {
+    text-decoration: none;
+}
+/* 已連結過 */
+a:visited {
+    text-decoration: none;
+}
+/* 滑鼠移至連結 */
+a:hover {
+    text-decoration: none;
+}
+/* 選擇的連結 */
+a:active {
+    text-decoration: none;w
+}

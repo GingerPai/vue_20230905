@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/myCss.css" />
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>起手式-添加連結</h2>
+        <a href="note/vue-0.PNG">
+            <img src="note/vue-0.PNG" alt="" class="w-25">
+        </a>
+        <p class="h1">{{ text01 }}</p>
+        <p class="h2">{{ text02 }}</p>
+        <!-- 1. v-model 綁定-->
+        <div class="demo">
+            <h2>1-1. v-model 綁定、v-text、v-html</h2>
+            <p>於前台input輸入文字，js中綁定的data欄位資料會跟著input輸入的內容改變</p>
+            <input type="text" class="form-control" v-model="mytitle">
+            <p class="h3">你輸入的字為: {{mytitle}}</p>
+            <div v-text="mytitle"></div>
+            <h2>1-2. v-text</h2>
+            <div v-html="mytitle"></div>
+            <h2>1-3. v-html</h2>
+            <a href="note/vue-2.PNG"><img src="note/vue-2.PNG" alt="" class="w-25"></a>
+            <a href="note/vue-html-2.PNG"><img src="note/vue-html-2.PNG" alt="" class="w-25"></a>
+            
+        </div>
+
+        <!-- 2. v-bind 綁定-->
+        <div class="demo">
+            <h2>2. v-bind</h2>
+            <img v-bind:src="imgSrc" alt="" v-bind:class="classW50">
+            <br>
+            <img v-bind:src="imgSrc01" alt="" v-bind:class="classW25">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <label for="">請輸入圖片網址，例如:https://images.unsplash.com/photo-1682687220509-61b8a906ca19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60</label>
+            <input type="text" class="form-control my-3" v-model="imgSrc01">
+            <br>
+            <br>
+            <select name="" id="" >
+                <option v-bind:value="imgSrc01">imgSrc01</option>
+            </select>
+        </div>
+
+        <!-- 3. v-for and v-if -->
+        <div class="demo">
+            <h2>3. v-for and v-if</h2>
+            <h3>使用v-for 渲染資料</h3>
+            <ul class="list-group">
+                <!-- <li class="list-group-item" v-for="item in list">1. 西瓜 1斤==> 100元</li> -->
+                <li class="list-group-item" v-for="(item, key) in list">{{key+1}}. {{ item.product }} 1斤 ==> {{ item.price }} 元</li>
+            </ul>
+            <h3>使用 v-for + v-if 渲染資料(v-for和v-if不能放在同一個行內，所以v-if要使用template標籤在裡面加一層)</h3>
+            <ul class="list-group">
+                <template v-for="(item, key) in list">
+                    <li class="list-group-item" v-if="item.price < 100">
+                        {{ key + 1 }}. {{ item.product }} 1斤 ==> {{ item.price }} 元
+                    </li>
+                </template>
+            </ul>
+            <br>
+            <br>
+            <div class="h1" v-if="textShow">
+                {{ text02 }}
+            </div>
+            <div class="h1" v-if = "textShow">
+                {{ text02 }}
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <!-- 3. v-on 監聽 click事件 綁定active這個cladd -->
+        <div class="demo">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <!-- 更新mylink為草莓，當data的mylink == '草莓'則這個超連結將被賦予"active"這個class-->
+                  <a class="nav-link" href="#" v-on:click.prevent="mylink = '草莓'" v-bind:class="{'active' : mylink == '草莓'}">草莓</a>
+                </li>
+                <li class="nav-item">
+                    <!-- 更新mylink為草莓，當data的mylink == '香蕉'則這個超連結將被賦予"active"這個class-->
+                  <a class="nav-link" href="#" v-on:click.prevent="mylink = '香蕉'" v-bind:class="{'active' : mylink == '香蕉'}">香蕉</a>
+                </li>
+                <li class="nav-item">
+                    <!-- 更新mylink為草莓，當data的mylink == '西瓜'則這個超連結將被賦予"active"這個class-->
+                  <a class="nav-link" href="#" v-on:click.prevent="mylink = '西瓜'" v-bind:class="{'active' : mylink == '西瓜'}">西瓜</a>
+                </li>
+                <li class="nav-item">
+                    <!-- 更新mylink為草莓，當data的mylink == '水蜜桃'則這個超連結將被賦予"active"這個class-->
+                  <a class="nav-link" href="#" v-on:click.prevent="mylink = '水蜜桃'" v-bind:class="{'active' : mylink == '水蜜桃'}">水蜜桃</a>
+                </li>
+            </ul>
+            <div style="display: flex; flex-direction: row;">
+                <template  v-for="item in list" >
+                    <li v-if=" item.product == mylink">
+                        <div class="product" style="border: 1px solid #333; padding: 10px;">
+                            <h3>{{item.city}}</h3>
+                            <h4>價格 $ {{item.price}}</h4>
+                        </div>
+                    </li>
+                </template>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const App = {
+            data(){
+                return {
+                    text01: 'hello word',
+                    text02: 'hello 002',
+                    mytitle: 'vue 教學示範',
+                    imgSrc: 'note/vue-1.PNG',
+                    imgSrc01: 'https://images.unsplash.com/photo-1683009427500-71296178737f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60',
+                    imgSrc02: 'https://images.unsplash.com/photo-1682687220509-61b8a906ca19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60',
+                    classW50: 'w-50',
+                    classW25: 'w-25',
+                    textShow: true,
+                    mylink: '草莓',
+                    list: [
+                        {
+                            product: '草莓',
+                            price: 100,
+                            city: '台中市',
+                        },{
+                            product: '香蕉',
+                            price: 80,
+                            city: '台中市',
+                        },{
+                            product: '西瓜',
+                            price: 20,
+                            city: '台中市',
+                        },{
+                            product: '水蜜桃',
+                            price: 150,
+                            city: '台中市',
+                        },{
+                            product: '草莓',
+                            price: 120,
+                            city: '苗栗市',
+                        },{
+                            product: '香蕉',
+                            price: 100,
+                            city: '苗栗市',
+                        },{
+                            product: '西瓜',
+                            price: 30,
+                            city: '苗栗市',
+                        },{
+                            product: '水蜜桃',
+                            price: 180,
+                            city: '苗栗市',
+                        },
+                    ],
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app');
+        
+    </script>
+</body>
+</html>
